@@ -1,25 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { useNavigate, useParams } from "react-router-dom";
+import { getJob } from "../src/data/fetchData";
+import SkillsPaper from "../src/components/SkillsPaper";
 
-function App() {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: "90%", md: 600 },
+  bgcolor: "background.paper",
+  borderRadius: 2,
+  border: "none",
+};
+
+function JobDetailModal() {
+  const { id } = useParams();
+  const [job, setJob] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getJob(id);
+      setJob(data);
+    };
+    fetchData();
+  }, []);
+
+  const handleClose = () => {
+    navigate(-1);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Modal
+        open={true}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Card
+            sx={{
+              border: "none",
+              boxShadow: 0,
+              backgroundColor: (theme) => theme.palette.primary.light,
+              color: (theme) => theme.palette.common.white,
+            }}
+          >
+            <CardContent>
+              <Typography variant="h5" component="div">
+                {job?.title}
+              </Typography>
+              <SkillsPaper skills={job?.skills} />
+              <Typography>{job?.description}</Typography>
+              <Typography variant="h6" component="div">
+                City: {job?.city}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+      </Modal>
     </div>
   );
 }
 
-export default App;
+export default JobDetailModal;

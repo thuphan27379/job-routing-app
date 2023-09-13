@@ -1,0 +1,25 @@
+User story:
+
+Users can see the navigation bar that shows "user status"
+If the user hasn't signed in, see the sign-in button on the right side
+If users have signed in, see the username and a sign out button instead
+Users can see the list of jobs on the main page
+Users can click on a single job card to pop up a detailed job modal
+If the user haven't signed in, pop up a sign in modal
+Users can sign in with a fixed username and password (don't have to sign up) and sign out. Then the application will navigate the user to the expected page.
+🚀 The demo is missing a search function? Can you implement it?
+🚀 The login modal matchs the url /login. 
+See more https://github.com/remix-run/react-router/tree/main/examples/modal
+
+
+Resources and demo:
+
+Resources:
+Authentication with React Router https://github.com/remix-run/react-router/tree/main/examples/auth
+Modal with React Router https://github.com/remix-run/react-router/tree/main/examples/modal
+Job data Create your fake API with json-server then practice fetching data. https://drive.google.com/file/d/175JD05bo6Cjn3XupqlBf83n2Jta1Ymz1/view?usp=sharing
+Modal Material UI https://mui.com/material-ui/react-modal/
+React Hook Form https://react-hook-form.com/
+🚀 Search params with React Router https://github.com/remix-run/react-router/tree/main/examples/search-params
+
+Demo https://cs-job-routing.netlify.app/
