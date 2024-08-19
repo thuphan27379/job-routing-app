@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./auth/AuthProvider";
 import ThemeProvider from "./theme";
 
+//
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

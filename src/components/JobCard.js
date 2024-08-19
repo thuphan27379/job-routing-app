@@ -10,6 +10,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import SkillsPaper from "./SkillsPaper";
 import { styled } from "@mui/material/styles";
 
+//
 const CardStyle = styled(Card)(({ theme }) => ({
   boxShadow: "none",
   border: "1px solid black",
@@ -21,17 +22,20 @@ const CardStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
 }));
 
+//
 function JobCard({ description, skills, id, title }) {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   let location = useLocation();
-  const hanleClick = (event) => {
+
+  const handleClick = (event) => {
     if (auth.user) {
       navigate(`/job/${id}`);
     } else {
       navigate("/login");
     }
   };
+
   return (
     <CardStyle ariant="outlined">
       <Stack
@@ -55,6 +59,7 @@ function JobCard({ description, skills, id, title }) {
             {description}
           </Typography>
         </CardContent>
+
         <Button
           variant="contained"
           component={Link}

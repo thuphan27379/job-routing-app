@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Auth from "../auth/auth";
 import AuthContext from "./AuthContext";
 
+//
 function AuthProvider({ children }) {
   let [user, setUser] = useState(null);
 

@@ -5,10 +5,10 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { useNavigate, useParams } from "react-router-dom";
-// import { getJob, getJobs } from "../data/fetchData";
+import api from "../data/fetchData";
 import SkillsPaper from "./SkillsPaper";
-import { getJob } from "../data/fetchData";
 
+//
 const style = {
   position: "absolute",
   top: "50%",
@@ -20,6 +20,7 @@ const style = {
   border: "none",
 };
 
+//
 function JobDetailModal() {
   const { id } = useParams();
   const [job, setJob] = useState(null);
@@ -28,15 +29,17 @@ function JobDetailModal() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getJob(id);
+      const data = await api.getJob(id);
       setJob(data);
     };
     fetchData();
-  }, [id]);
+  }, []);
 
   const handleClose = () => {
     navigate(-1);
   };
+
+  //
   return (
     <div>
       <Modal
